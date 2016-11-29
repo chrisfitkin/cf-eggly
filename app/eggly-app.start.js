@@ -48,6 +48,7 @@ angular.module('Eggly', [
             };
         }
 
+
         //-------------------------------------------------------------------------------------------------
         // CRUD
         //-------------------------------------------------------------------------------------------------
@@ -58,7 +59,38 @@ angular.module('Eggly', [
             resetCreateForm();
         }
 
+        function updateBookmark(editedBookmark) {
+            var index = _.findIndex($scope.bookmarks, function(b) {
+                return b.id == editedBookmark.id;
+            })
+
+            $scope.bookmarks[index] = editedBookmark;
+            cancelEditing();
+        }
+
+        function setEditedBookmark(bookmark) {
+            $scope.editedBookmark = angular.copy(bookmark);
+        }
+
+        function isSelectedBookmark(bookmark) {
+            return $scope.editedBookmark !== null && $scope.editedBookmark.id === bookmark.id;
+        }
+
+        function deleteBookmark(bookmark) {
+            var index = _.findIndex($scope.bookmarks, function(b) {
+                return b.id == bookmark.id;
+            })
+
+            var removed = $scope.bookmarks.splice(index, 1);
+        }
+
         $scope.createBookmark = createBookmark;
+        $scope.updateBookmark = updateBookmark;
+        $scope.setEditedBookmark = setEditedBookmark;
+        $scope.isSelectedBookmark = isSelectedBookmark;
+        $scope.deleteBookmark = deleteBookmark;
+
+        $scope.editedBookmark = null;
 
         //-------------------------------------------------------------------------------------------------
         // CREATING AND EDITING STATES
