@@ -25,7 +25,8 @@
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <div ng-class="{active: isSelectedBookmark(bookmark.id)}"  ng-repeat="bookmark in bookmarks | filter:{category:currentCategory.name}">
+                    <div ng-init="hello='world'" ng-class="{active: isSelectedBookmark(bookmark.id)}"  ng-repeat="bookmark in bookmarks | filter:{category:currentCategory.name}">
+                        <h1>{{hello}}</h1>
                         <button type="button" class="close">&times;</button>
                         <button type="button" class="btn btn-link" ng-click="setEditedBookmark(bookmark);startEditing();" ><span class="glyphicon glyphicon-pencil"></span>
                         </button>
@@ -75,7 +76,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js"></script>
 
         <script src="app/eggly-app.start.js"></script>
     </body>
